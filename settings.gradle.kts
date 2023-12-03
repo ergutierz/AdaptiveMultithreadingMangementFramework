@@ -14,7 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AMMF SDK"
-include(":ThreadManagementEngine")
-include(":PerformanceMonitoring")
-include(":AMMF-Api")
-include(":ResourceAllocation")
+include(":AMMF")
