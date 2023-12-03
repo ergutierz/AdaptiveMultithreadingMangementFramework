@@ -9,6 +9,10 @@ class AMMFSdk private constructor(
     val monitoringInterval: Int,
 ) {
 
+    fun viewDebug() {
+        println("AMMFSdk.viewDebug")
+    }
+
     class Builder(private val context: Context) {
         private var threadPoolSize: Int = 10
         private var threadPriority: Int = Thread.MAX_PRIORITY
