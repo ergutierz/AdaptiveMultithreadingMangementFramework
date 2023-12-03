@@ -1,7 +1,11 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    `maven-publish`
 }
+
+group = "com.example.ammf"
+version = "1.3"
 
 android {
     namespace = "com.example.ammf"
@@ -21,6 +25,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            consumerProguardFiles("consumer-rules.pro")
         }
     }
     compileOptions {
@@ -29,6 +34,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
     }
 }
 
@@ -41,3 +52,22 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            pom {
+                name.set("AMMF")
+                description.set("Adaptive Multithreading Management Framework")
+                url.set("")
+            }
+            groupId = group.toString()
+            artifactId = "ammf"
+            version = version.toString()
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
+
